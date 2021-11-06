@@ -1,3 +1,3 @@
-# Deep Learning with JavaScript
+# Machine Learning with JavaScript
 
-Some examples based on [Deep Learning with JavaScript](https://www.amazon.com/Deep-Learning-JavaScript-Shanqing-Cai/dp/1617296171) by Shanqing Cai, Stanley Bileschi and Eric D. Nielsen (2020).
+Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
