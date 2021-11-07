@@ -1,14 +1,6 @@
-# Machine Learning Projects with JavaScript
-
-This repo is made of 1 project:
-
-1. [**Plinko**](#plinko): A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
-
-## <a name="plinko"></a> 2) Plinko
+# Plinko
 
 A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
-
-[See 01-plinko folder](https://github.com/solygambas/javascript-machine-learning/tree/main/01-plinko)
 
 ### Features
 
