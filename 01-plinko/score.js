@@ -17,7 +17,9 @@ function onScoreUpdate(dropPosition, bounciness, size, bucketLabel) {
 // Write code here to analyze stuff
 function runAnalysis() {
   const testSetSize = 100;
-  const [testSet, trainingSet] = splitDataset(outputs, testSetSize);
+  const k = 10;
+  // const normalizedData = minMax(outputs, 3);
+  // const [testSet, trainingSet] = splitDataset(normalizedData, testSetSize);
 
   // With a for loop
   // let numberCorrect = 0;
@@ -31,17 +33,35 @@ function runAnalysis() {
   // console.log("Accuracy", numberCorrect / testSetSize);
 
   // With lodash chaining
-  _.range(1, 20).forEach((k) => {
+  // estimate the best k value
+  // _.range(1, 20).forEach((k) => {
+  //   const accuracy = _.chain(testSet)
+  //     // .filter((testPoint) => knn(trainingSet, testPoint[0], k) === testPoint[3])
+  //     .filter(
+  //       (testPoint) =>
+  //         knn(trainingSet, _.initial(testPoint), k) === testPoint[3]
+  //     )
+  //     .size()
+  //     .divide(testSetSize)
+  //     .value();
+  //   console.log("For k of", k, "accuracy is", accuracy);
+  // });
+
+  // pick best feature
+  _.range(0, 3).forEach((feature) => {
+    // generate a dataset with only one feature and label
+    const data = _.map(outputs, (row) => [row[feature], _.last(row)]);
+    const normalizedData = minMax(data, 1);
+    const [testSet, trainingSet] = splitDataset(normalizedData, testSetSize);
     const accuracy = _.chain(testSet)
-      // .filter((testPoint) => knn(trainingSet, testPoint[0], k) === testPoint[3])
       .filter(
         (testPoint) =>
-          knn(trainingSet, _.initial(testPoint), k) === testPoint[3]
+          knn(trainingSet, _.initial(testPoint), k) === _.last(testPoint)
       )
       .size()
       .divide(testSetSize)
       .value();
-    console.log("For k of k", k, "accuracy is", accuracy);
+    console.log("For feature of", feature, "accuracy is", accuracy);
   });
 }
 
@@ -90,4 +110,20 @@ function splitDataset(data, testCount) {
   const testSet = _.slice(shuffled, 0, testCount);
   const trainingSet = _.slice(shuffled, testCount);
   return [testSet, trainingSet];
+}
+
+// Normalize witn MinMax
+function minMax(data, featureCount) {
+  const clonedData = _.cloneDeep(data);
+  // iterate over columns
+  for (let i = 0; i < featureCount; i++) {
+    const column = clonedData.map((row) => row[i]);
+    const min = _.min(column);
+    const max = _.max(column);
+    // iterate over rows to normalize data
+    for (let j = 0; j < clonedData.length; j++) {
+      clonedData[j][i] = (clonedData[j][i] - min) / (max - min);
+    }
+  }
+  return clonedData;
 }
