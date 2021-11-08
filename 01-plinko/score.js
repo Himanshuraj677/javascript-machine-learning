@@ -6,7 +6,7 @@ const outputs = [];
 //   [600, 0.5, 16, 5],
 // ];
 // const predictionPoint = 300;
-const k = 3;
+// const k = 3;
 
 // Ran every time a balls drops into a bucket
 function onScoreUpdate(dropPosition, bounciness, size, bucketLabel) {
@@ -16,11 +16,11 @@ function onScoreUpdate(dropPosition, bounciness, size, bucketLabel) {
 
 // Write code here to analyze stuff
 function runAnalysis() {
-  const testSetSize = 10;
+  const testSetSize = 100;
   const [testSet, trainingSet] = splitDataset(outputs, testSetSize);
-  let numberCorrect = 0;
 
   // With a for loop
+  // let numberCorrect = 0;
   // for (let i = 0; i < testSet.length; i++) {
   //   const bucket = knn(trainingSet, testSet[i][0]); // testSet: [10, 0.5, 16, 1] [point, bounciness, size, predictedBucket]
   //   // console.log(bucket, testSet[i][3]);
@@ -31,19 +31,21 @@ function runAnalysis() {
   // console.log("Accuracy", numberCorrect / testSetSize);
 
   // With lodash chaining
-  const accuracy = _.chain(testSet)
-    .filter((testPoint) => knn(trainingSet, testPoint[0]) === testPoint[3])
-    .size()
-    .divide(testSetSize)
-    .value();
-  console.log("Accuracy is", accuracy);
+  _.range(1, 20).forEach((k) => {
+    const accuracy = _.chain(testSet)
+      .filter((testPoint) => knn(trainingSet, testPoint[0], k) === testPoint[3])
+      .size()
+      .divide(testSetSize)
+      .value();
+    console.log("For k of k", k, "accuracy is", accuracy);
+  });
 }
 
 function distance(pointA, pointB) {
   return Math.abs(pointA - pointB);
 }
 
-function knn(data, point) {
+function knn(data, point, k) {
   return (
     _.chain(data)
       // 1) substract drop point from 300px
