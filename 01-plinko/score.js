@@ -33,7 +33,11 @@ function runAnalysis() {
   // With lodash chaining
   _.range(1, 20).forEach((k) => {
     const accuracy = _.chain(testSet)
-      .filter((testPoint) => knn(trainingSet, testPoint[0], k) === testPoint[3])
+      // .filter((testPoint) => knn(trainingSet, testPoint[0], k) === testPoint[3])
+      .filter(
+        (testPoint) =>
+          knn(trainingSet, _.initial(testPoint), k) === testPoint[3]
+      )
       .size()
       .divide(testSetSize)
       .value();
@@ -42,14 +46,29 @@ function runAnalysis() {
 }
 
 function distance(pointA, pointB) {
-  return Math.abs(pointA - pointB);
+  // pointA = 300, pointB = 350
+  // return Math.abs(pointA - pointB);
+
+  // 3D Pythagorean theorem
+  // pointA = [300, 0.5, 16], pointB = [350, 0.55, 16]
+  return (
+    _.chain(pointA)
+      .zip(pointB)
+      .map(([a, b]) => (a - b) ** 2)
+      .sum()
+      .value() ** 0.5
+  );
 }
 
 function knn(data, point, k) {
   return (
     _.chain(data)
-      // 1) substract drop point from 300px
-      .map((row) => [distance(row[0], point), row[3]])
+      // 1a) substract drop point from 300px
+      // .map((row) => [distance(row[0], point), row[3]])
+      // 1b) handle multiple features
+      .map((row) => {
+        return [distance(_.initial(row), point), _.last(row)];
+      })
       // 2) sort by ascending order
       .sortBy((row) => row[0])
       // 3) keep the 'k' top records
