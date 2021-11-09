@@ -1,10 +1,11 @@
 # Machine Learning Projects with JavaScript
 
-This repo is made of 1 project:
+This repo is made of 2 projects:
 
 1. [**Plinko**](#plinko): A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
+1. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
 
-## <a name="plinko"></a> 2) Plinko
+## <a name="plinko"></a> 1) Plinko
 
 A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 
@@ -26,5 +27,21 @@ A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 - updating KNN for multiple features.
 - applying normalization with MinMax.
 - handling objective feature selection with KNN.
+
+## <a name="housepricings"></a> 2) House Pricings
+
+Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
+
+[See 02-house-pricings folder](https://github.com/solygambas/javascript-machine-learning/tree/main/02-house-pricings)
+
+<!-- <p align="center">
+    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/02-house-pricings">
+        <img src="02-house-pricings/screenshot.png">
+    </a>
+</p> -->
+
+### Features
+
+-
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
