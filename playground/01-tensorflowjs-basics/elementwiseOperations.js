@@ -1,4 +1,4 @@
-// https://stephengrider.github.io/JSPlaygrounds/
+// use https://stephengrider.github.io/JSPlaygrounds/
 
 // const data = tf.tensor([1, 2, 3])
 // data.shape
