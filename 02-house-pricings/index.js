@@ -4,6 +4,30 @@
 const tf = require("@tensorflow/tfjs");
 const loadCSV = require("./load-csv");
 
+function knn(features, labels, predictionPoint, k) {
+  // calculate distance between features and prediction point
+  return (
+    features
+      .sub(predictionPoint)
+      .pow(2)
+      .sum(1)
+      .pow(0.5)
+      .expandDims(1)
+      .concat(labels, 1) // keep order relationships
+      .unstack() // create a JS array of individual tensors
+
+      // sort from lowest to greatest
+      .sort((a, b) => (a.arraySync()[0] > b.arraySync()[0] ? 1 : -1)) // https://github.com/tensorflow/tfjs/issues/2999
+
+      // pick the K nearest values
+      .slice(0, k)
+
+      // average the values
+      .reduce((acc, pair) => acc + pair.arraySync()[1], 0) / // get house value label
+    k
+  );
+}
+
 let { features, labels, testFeatures, testLabels } = loadCSV(
   "kc_house_data.csv",
   {
@@ -14,5 +38,8 @@ let { features, labels, testFeatures, testLabels } = loadCSV(
   }
 );
 
-console.log(testFeatures);
-console.log(testLabels);
+features = tf.tensor(features);
+labels = tf.tensor(labels);
+
+const result = knn(features, labels, tf.tensor(testFeatures[0]), 10);
+console.log("Guess", result, testLabels[0][0]);

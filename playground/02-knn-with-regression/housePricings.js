@@ -22,11 +22,11 @@ features
   .unstack() // create a JS array of individual tensors
 
   // sort from lowest to greatest
-  .sort((a, b) => (a.get(0) > b.get(0) ? 1 : -1))
+  .sort((a, b) => (a.arraySync()[0] > b.arraySync()[0] ? 1 : -1))
 
   // pick the K nearest values
   .slice(0, k)
 
   // average the values
-  .reduce((acc, pair) => acc + pair.get(1), 0) / // get house value label // 440 (200+240)
+  .reduce((acc, pair) => acc + pair.arraySync()[1], 0) / // get house value label // 440 (200+240)
   k; // 220

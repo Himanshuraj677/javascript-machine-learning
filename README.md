@@ -34,14 +34,9 @@ Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js
 
 [See 02-house-pricings folder](https://github.com/solygambas/javascript-machine-learning/tree/main/02-house-pricings)
 
-<!-- <p align="center">
-    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/02-house-pricings">
-        <img src="02-house-pricings/screenshot.png">
-    </a>
-</p> -->
-
 ### Features
 
--
+- loading CSV data.
+- running K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
