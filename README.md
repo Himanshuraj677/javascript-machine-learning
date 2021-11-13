@@ -1,9 +1,10 @@
 # Machine Learning Projects with JavaScript
 
-This repo is made of 2 projects:
+This repo is made of 3 projects:
 
 1. [**Plinko**](#plinko): A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
-1. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
+2. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
+3. [**Gas Mileage Calculator**](#gasmileage): A gradient descent algorithm using Tensorflow.js.
 
 ## <a name="plinko"></a> 1) Plinko
 
@@ -42,5 +43,15 @@ Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js
 - applying standardization.
 - debugging calculations with node --inspect-brk and Chrome debugger.
 - adding features to get a better accuracy.
+
+## <a name="gasmileage"></a> 3) Gas Mileage Calculator
+
+A gradient descent algorithm using Tensorflow.js.
+
+[See 03-gas-mileage-calculator folder](https://github.com/solygambas/javascript-machine-learning/tree/main/03-gas-mileage-calculator)
+
+### Features
+
+-
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
