@@ -1,10 +1,10 @@
 const tf = require("@tensorflow/tfjs");
-const _ = require("lodash");
 
 class LinearRegression {
   constructor(features, labels, options) {
     this.features = this.processFeatures(features);
     this.labels = tf.tensor(labels);
+    this.mseHistory = [];
 
     this.options = Object.assign(
       { learningRate: 0.1, iterations: 1000 }, // fallback values if no options are provided
@@ -32,6 +32,8 @@ class LinearRegression {
   train() {
     for (let i = 0; i < this.options.iterations; i++) {
       this.gradientDescent();
+      this.recordMSE();
+      this.updateLearningRate();
     }
   }
 
@@ -67,6 +69,29 @@ class LinearRegression {
     this.mean = mean;
     this.variance = variance;
     return features.sub(mean).div(variance.pow(0.5));
+  }
+
+  recordMSE() {
+    // Calculate vectorized MSE
+    const mse = this.features
+      .matMul(this.weights)
+      .sub(this.labels)
+      .pow(2)
+      .sum()
+      .div(this.features.shape[0])
+      .arraySync();
+    this.mseHistory.unshift(mse); // rather than push() to make comparisons easier;
+  }
+
+  updateLearningRate() {
+    if (this.mseHistory.length < 2) {
+      return;
+    }
+    if (this.mseHistory[0] > this.mseHistory[1]) {
+      this.options.learningRate /= 2; // = this.options.learningRate / 2;
+    } else {
+      this.options.learningRate *= 1.05;
+    }
   }
 }
 
