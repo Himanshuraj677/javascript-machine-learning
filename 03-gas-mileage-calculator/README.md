@@ -11,5 +11,6 @@ A gradient descent algorithm using Tensorflow.js.
 - vectorizing the gradient descent algorithm with Tensorflow.js helpers.
 - gauging model accuracy by implementing coefficient of determination.
 - applying standardization and massaging learning rates.
+- refactoring for multivariate regression.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).

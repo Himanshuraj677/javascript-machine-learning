@@ -10,8 +10,8 @@ class LinearRegression {
       { learningRate: 0.1, iterations: 1000 }, // fallback values if no options are provided
       options
     );
-    // 1) Pick a value for m and b
-    this.weights = tf.zeros([2, 1]); // [[0],[0]];
+    // 1) Pick a value for Ms and B
+    this.weights = tf.zeros([this.features.shape[1], 1]); // [[0],[0]];
   }
 
   gradientDescent() {
