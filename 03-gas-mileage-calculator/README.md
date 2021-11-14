@@ -2,6 +2,10 @@
 
 A gradient descent algorithm using Tensorflow.js.
 
+<p align="center">
+        <img src="screenshot.png">
+</p>
+
 ### Features
 
 - loading CSV data and creating a LinearRegression class.
@@ -13,5 +17,6 @@ A gradient descent algorithm using Tensorflow.js.
 - applying standardization and massaging learning rates.
 - refactoring for multivariate regression.
 - tracking MSE history to update learning rate automatically.
+- plotting MSE history against B values with nodeplotlib.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).

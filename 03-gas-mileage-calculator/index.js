@@ -4,6 +4,7 @@
 const tf = require("@tensorflow/tfjs");
 const loadCSV = require("./load-csv");
 const LinearRegression = require("./linear-regression");
+const plot = require("nodeplotlib");
 
 let { features, labels, testFeatures, testLabels } = loadCSV("./cars.csv", {
   shuffle: true,
@@ -13,7 +14,7 @@ let { features, labels, testFeatures, testLabels } = loadCSV("./cars.csv", {
 });
 
 const regression = new LinearRegression(features, labels, {
-  learningRate: 10,
+  learningRate: 0.1,
   iterations: 100,
 });
 
@@ -28,5 +29,44 @@ regression.train();
 // );
 
 const r2 = regression.test(testFeatures, testLabels);
-console.log("MSE History", regression.mseHistory);
+// console.log("MSE History", regression.mseHistory);
 console.log("R2 is", r2);
+
+const data = [
+  {
+    // x: regression.bHistory, // to see gradient descent visually
+    y: regression.mseHistory.reverse(),
+  },
+];
+const layout = {
+  title: {
+    text: "Plotting MSE Values",
+    font: {
+      family: "Courier New, monospace",
+      size: 24,
+    },
+    xref: "paper",
+  },
+  xaxis: {
+    title: {
+      text: "Iteration #",
+      font: {
+        family: "Courier New, monospace",
+        size: 18,
+        color: "#7f7f7f",
+      },
+    },
+  },
+  yaxis: {
+    title: {
+      text: "Mean Squared Error",
+      font: {
+        family: "Courier New, monospace",
+        size: 18,
+        color: "#7f7f7f",
+      },
+    },
+  },
+};
+
+plot.plot(data, layout);

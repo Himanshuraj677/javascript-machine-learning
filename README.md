@@ -50,6 +50,12 @@ A gradient descent algorithm using Tensorflow.js.
 
 [See 03-gas-mileage-calculator folder](https://github.com/solygambas/javascript-machine-learning/tree/main/03-gas-mileage-calculator)
 
+<p align="center">
+    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/03-gas-mileage-calculator">
+        <img src="03-gas-mileage-calculator/screenshot.png">
+    </a>
+</p>
+
 ### Features
 
 - loading CSV data and creating a LinearRegression class.
@@ -61,5 +67,6 @@ A gradient descent algorithm using Tensorflow.js.
 - applying standardization and massaging learning rates.
 - refactoring for multivariate regression.
 - tracking MSE history to update learning rate automatically.
+- plotting MSE history against B values with nodeplotlib.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
