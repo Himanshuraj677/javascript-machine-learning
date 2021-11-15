@@ -57,10 +57,10 @@ function loadCSV(
       ? splitTest
       : Math.floor(data.length / 2);
     return {
-      features: data.slice(trainSize),
-      labels: labels.slice(trainSize),
-      testFeatures: data.slice(0, trainSize),
-      testLabels: labels.slice(0, trainSize),
+      features: data.slice(0, trainSize),
+      labels: labels.slice(0, trainSize),
+      testFeatures: data.slice(trainSize),
+      testLabels: labels.slice(trainSize),
     };
   } else {
     return { features: data, labels };
@@ -75,4 +75,7 @@ const { features, labels, testFeatures, testLabels } = loadCSV("data.csv", {
   converters: { passed: (val) => (val === "TRUE" ? 1 : 0) },
 });
 
-console.log(features, labels, testFeatures, testLabels);
+console.log("Features", features);
+console.log("Labels", labels);
+console.log("Test Features", testFeatures);
+console.log("Test Labels", testLabels);
