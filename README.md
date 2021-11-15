@@ -68,5 +68,7 @@ A gradient descent algorithm using Tensorflow.js.
 - refactoring for multivariate regression.
 - tracking MSE history to update learning rate automatically.
 - plotting MSE history with nodeplotlib.
+- refactoring towards batch and stochastic gradient descent for better performances.
+- making predictions with the model.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).

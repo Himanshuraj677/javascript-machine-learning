@@ -34,6 +34,7 @@ const r2 = regression.test(testFeatures, testLabels);
 // console.log("MSE History", regression.mseHistory);
 console.log("R2 is", r2);
 
+// Plot data
 const data = [
   {
     // x: regression.bHistory, // to see gradient descent visually
@@ -71,4 +72,7 @@ const layout = {
   },
 };
 
-plot.plot(data, layout);
+// plot.plot(data, layout);
+
+// Make predictions
+regression.predict([[120, 2, 380]]).print(); // "horsepower", "weight", "displacement";
