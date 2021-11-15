@@ -4,7 +4,8 @@ This repo is made of 3 projects:
 
 1. [**Plinko**](#plinko): A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 2. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
-3. [**Gas Mileage Calculator**](#gasmileage): A gradient descent algorithm using Tensorflow.js.
+3. [**Gas Mileage Calculator**](#gasmileage): A gradient descent algorithm in linear regression using Tensorflow.js.
+4. [**Smog Test**](#smogtest): A gradient descent algorithm in logistic regression using Tensorflow.js.
 
 ## <a name="plinko"></a> 1) Plinko
 
@@ -46,7 +47,7 @@ Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js
 
 ## <a name="gasmileage"></a> 3) Gas Mileage Calculator
 
-A gradient descent algorithm using Tensorflow.js.
+A gradient descent algorithm in linear regression using Tensorflow.js.
 
 [See 03-gas-mileage-calculator folder](https://github.com/solygambas/javascript-machine-learning/tree/main/03-gas-mileage-calculator)
 
@@ -70,5 +71,21 @@ A gradient descent algorithm using Tensorflow.js.
 - plotting MSE history with nodeplotlib.
 - refactoring towards batch and stochastic gradient descent for better performances.
 - making predictions with the model.
+
+## <a name="smogtest"></a> 4) Smog Test
+
+A gradient descent algorithm in logistic regression using Tensorflow.js.
+
+[See 04-smog-test folder](https://github.com/solygambas/javascript-machine-learning/tree/main/04-smog-test)
+
+<!-- <p align="center">
+    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/04-smog-test">
+        <img src="04-smog-test/screenshot.png">
+    </a>
+</p> -->
+
+### Features
+
+-
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).

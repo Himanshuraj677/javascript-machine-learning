@@ -1,6 +1,6 @@
 # Gas Mileage Calculator
 
-A gradient descent algorithm using Tensorflow.js.
+A gradient descent algorithm in linear regression using Tensorflow.js.
 
 <p align="center">
         <img src="screenshot.png">
