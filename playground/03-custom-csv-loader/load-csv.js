@@ -1,5 +1,6 @@
 const fs = require("fs");
 const _ = require("lodash");
+const shuffleSeed = require("shuffle-seed");
 
 function extractColumns(data, columnNames) {
   const headers = _.first(data);
@@ -10,7 +11,7 @@ function extractColumns(data, columnNames) {
 
 function loadCSV(
   filename,
-  { converters = {}, dataColumns = [], labelColumns = [] }
+  { converters = {}, dataColumns = [], labelColumns = [], shuffle = true }
 ) {
   let data = fs.readFileSync(filename, { encoding: "utf-8" });
   // if you need to remove '\r': https://stackoverflow.com/questions/21640902/remove-r-cr-from-csv
@@ -38,10 +39,17 @@ function loadCSV(
   // remove headers
   data.shift();
   labels.shift();
+  if (shuffle) {
+    data = shuffleSeed.shuffle(data, "UseSamePhraseToHaveSameShuffling");
+    labels = shuffleSeed.shuffle(labels, "UseSamePhraseToHaveSameShuffling");
+    // change phrase if you want to reshuffle between runs
+  }
   console.log(data);
+  console.log(labels);
 }
 loadCSV("data.csv", {
   dataColumns: ["height", "value"],
   labelColumns: ["passed"],
+  shuffle: true,
   converters: { passed: (val) => (val === "TRUE" ? 1 : 0) },
 });
