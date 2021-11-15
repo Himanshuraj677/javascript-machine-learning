@@ -5,24 +5,25 @@ class LinearRegression {
     this.features = this.processFeatures(features);
     this.labels = tf.tensor(labels);
     this.mseHistory = [];
+    // this.bHistory = [];
 
     this.options = Object.assign(
-      { learningRate: 0.1, iterations: 1000, batchSize: 10 }, // fallback values if no options are provided
+      { learningRate: 0.1, iterations: 1000 }, // fallback values if no options are provided
       options
     );
     // 1) Pick a value for Ms and B
     this.weights = tf.zeros([this.features.shape[1], 1]); // [[0],[0]];
   }
 
-  gradientDescent(features, labels) {
+  gradientDescent() {
     // 2) Calculate slope of MSE with respect to m and b
     // features * ((features * weights)) - labels) / n
-    const currentGuesses = features.matMul(this.weights);
-    const differences = currentGuesses.sub(labels);
-    const slopes = features
+    const currentGuesses = this.features.matMul(this.weights);
+    const differences = currentGuesses.sub(this.labels);
+    const slopes = this.features
       .transpose()
       .matMul(differences)
-      .div(features.shape[0]);
+      .div(this.features.shape[0]);
     // .mul(2) // unnecessary since we don't care about the exact value, only +/- is useful to interpret slope of MSE;
 
     // 3) and 4) Multiply both slopes by learning rates and substract results from b and m
@@ -30,19 +31,9 @@ class LinearRegression {
   }
 
   train() {
-    // Handle batchs
-    const { batchSize } = this.options;
-    const batchQuantity = Math.floor(this.features.shape[0] / batchSize);
     for (let i = 0; i < this.options.iterations; i++) {
-      for (let j = 0; j < batchQuantity; j++) {
-        const startIndex = j * batchSize;
-        const featureSlice = this.features.slice(
-          [startIndex, 0],
-          [batchSize, -1]
-        );
-        const labelSlice = this.labels.slice([startIndex, 0], [batchSize, -1]);
-        this.gradientDescent(featureSlice, labelSlice);
-      }
+      // this.bHistory.push(this.weights.arraySync()[0][0]);
+      this.gradientDescent();
       this.recordMSE();
       this.updateLearningRate();
     }
