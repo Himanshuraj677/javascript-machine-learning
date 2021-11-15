@@ -11,7 +11,13 @@ function extractColumns(data, columnNames) {
 
 function loadCSV(
   filename,
-  { converters = {}, dataColumns = [], labelColumns = [], shuffle = true }
+  {
+    converters = {},
+    dataColumns = [],
+    labelColumns = [],
+    shuffle = true,
+    splitTest = false,
+  }
 ) {
   let data = fs.readFileSync(filename, { encoding: "utf-8" });
   // if you need to remove '\r': https://stackoverflow.com/questions/21640902/remove-r-cr-from-csv
@@ -39,17 +45,34 @@ function loadCSV(
   // remove headers
   data.shift();
   labels.shift();
+  // shuffle
   if (shuffle) {
     data = shuffleSeed.shuffle(data, "UseSamePhraseToHaveSameShuffling");
     labels = shuffleSeed.shuffle(labels, "UseSamePhraseToHaveSameShuffling");
     // change phrase if you want to reshuffle between runs
   }
-  console.log(data);
-  console.log(labels);
+  // split test and training data
+  if (splitTest) {
+    const trainSize = _.isNumber(splitTest)
+      ? splitTest
+      : Math.floor(data.length / 2);
+    return {
+      features: data.slice(trainSize),
+      labels: labels.slice(trainSize),
+      testFeatures: data.slice(0, trainSize),
+      testLabels: labels.slice(0, trainSize),
+    };
+  } else {
+    return { features: data, labels };
+  }
 }
-loadCSV("data.csv", {
+
+const { features, labels, testFeatures, testLabels } = loadCSV("data.csv", {
   dataColumns: ["height", "value"],
   labelColumns: ["passed"],
   shuffle: true,
+  splitTest: 1,
   converters: { passed: (val) => (val === "TRUE" ? 1 : 0) },
 });
+
+console.log(features, labels, testFeatures, testLabels);
