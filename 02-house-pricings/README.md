@@ -11,4 +11,4 @@ Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js
 - debugging calculations with node --inspect-brk and Chrome debugger.
 - adding features to get a better accuracy.
 
-Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
+Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2021).

@@ -21,4 +21,4 @@ A gradient descent algorithm in linear regression using Tensorflow.js.
 - refactoring towards batch and stochastic gradient descent for better performances.
 - making predictions with the model.
 
-Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
+Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2021).

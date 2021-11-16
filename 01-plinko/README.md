@@ -17,4 +17,4 @@ A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 - applying normalization with MinMax.
 - handling objective feature selection with KNN.
 
-Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
+Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2021).

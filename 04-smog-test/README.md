@@ -1,6 +1,6 @@
 # Smog Test
 
-A gradient descent algorithm in logistic regression to handle binary classification.
+A gradient descent algorithm in logistic regression to handle natural binary classification.
 
 <p align="center">
         <img src="screenshot.png">
@@ -14,4 +14,4 @@ A gradient descent algorithm in logistic regression to handle binary classificat
 - refactoring with cross entropy to update learning rate.
 - plotting cost history with nodeplotlib.
 
-Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
+Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2021).
