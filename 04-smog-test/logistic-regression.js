@@ -7,7 +7,12 @@ class LogisticRegression {
     this.mseHistory = [];
 
     this.options = Object.assign(
-      { learningRate: 0.1, iterations: 1000, batchSize: 10 }, // fallback values if no options are provided
+      {
+        learningRate: 0.1,
+        iterations: 1000,
+        batchSize: 10,
+        decisionBoundary: 0.5,
+      }, // fallback values if no options are provided
       options
     );
     // 1) Pick a value for Ms and B
@@ -48,15 +53,19 @@ class LogisticRegression {
   }
 
   predict(observations) {
-    return this.processFeatures(observations).matMul(this.weights).sigmoid();
+    return this.processFeatures(observations)
+      .matMul(this.weights)
+      .sigmoid()
+      .greater(this.options.decisionBoundary)
+      .cast("float32"); // to convert bool to numbers
+    // use .round() if your decision boundary is always 0.5
   }
 
   test(testFeatures, testLabels) {
-    const predictions = this.predict(testFeatures).round(); // 0.5 is our decision boundary with .round()
+    const predictions = this.predict(testFeatures);
     testLabels = tf.tensor(testLabels);
     // Compare predictions to real labels and sum up the number of incorrect predictions
     const incorrect = predictions.sub(testLabels).abs().sum().arraySync(); // .abs() to avoid -1
-    console.log(incorrect);
     // Calculate error percentage
     return (predictions.shape[0] - incorrect) / predictions.shape[0];
   }

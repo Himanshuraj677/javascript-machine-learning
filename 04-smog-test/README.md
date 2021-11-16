@@ -10,5 +10,6 @@ A gradient descent algorithm in logistic regression using Tensorflow.js.
 
 - updating linear regression for logistic regression by adding the sigmoid equation.
 - implementing a test function to gauge classification accuracy.
+- supporting variable decision boundaries.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
