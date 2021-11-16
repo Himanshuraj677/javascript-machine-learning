@@ -15,8 +15,12 @@ class LogisticRegression {
       }, // fallback values if no options are provided
       options
     );
-    // 1) Pick a value for Ms and B
+    // 1) Pick a value for 3 Ms and B
     this.weights = tf.zeros([this.features.shape[1], this.labels.shape[1]]);
+    // [[0, 0, 0],
+    //  [0, 0, 0],
+    //  [0, 0, 0],
+    //  [0, 0, 0]]
   }
 
   gradientDescent(features, labels) {

@@ -3,18 +3,30 @@
 // require("@tensorflow/tfjs-node-gpu"); // GPU will be used for calculations
 const tf = require("@tensorflow/tfjs");
 const loadCSV = require("./load-csv");
-const LogisticRegression = require("./logistic-regression");
+const LogisticRegression = require("./multinominal-logistic-regression");
+const _ = require("lodash");
 const plot = require("nodeplotlib");
 
 let { features, labels, testFeatures, testLabels } = loadCSV("./cars.csv", {
   dataColumns: ["horsepower", "displacement", "weight"],
-  labelColumns: ["passedemissions"],
+  labelColumns: ["mpg"],
   shuffle: true,
   splitTest: 50,
-  converters: { passedemissions: (value) => (value === "TRUE" ? 1 : 0) },
+  converters: {
+    mpg: (value) => {
+      const mpg = parseFloat(value);
+      if (mpg < 15) {
+        return [1, 0, 0]; // low class
+      } else if (mpg < 30) {
+        return [0, 1, 0]; // medium class
+      } else {
+        return [0, 0, 1]; // high class
+      }
+    },
+  },
 });
 
-const regression = new LogisticRegression(features, labels, {
+const regression = new LogisticRegression(features, _.flatMap(labels), {
   learningRate: 0.5,
   iterations: 100,
   batchSize: 10,
@@ -22,12 +34,14 @@ const regression = new LogisticRegression(features, labels, {
 });
 
 regression.train();
-console.log(regression.test(testFeatures, testLabels));
+
+regression.predict([[220, 454, 2.18]]).print();
+// console.log(regression.test(testFeatures, testLabels));
 
 // Plot data
 const data = [
   {
-    y: regression.costHistory.reverse(),
+    // y: regression.costHistory.reverse(),
   },
 ];
 const layout = {
@@ -61,4 +75,4 @@ const layout = {
   },
 };
 
-plot.plot(data, layout);
+// plot.plot(data, layout);

@@ -1,12 +1,12 @@
 # Machine Learning Projects with JavaScript
 
-This repo is made of 3 projects:
+This repo is made of 5 projects:
 
 1. [**Plinko**](#plinko): A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 2. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
 3. [**Gas Mileage Calculator**](#gasmileage): A gradient descent algorithm in linear regression using Tensorflow.js.
 4. [**Smog Test**](#smogtest): A gradient descent algorithm in logistic regression to handle binary classification.
-5. [**Fuel Efficiency**](#fuelefficiency): A multinominal logistic regression to handle multi-value classification.
+5. [**Fuel Efficiency Class**](#fuelefficiency): A multinominal logistic regression to handle multi-value classification.
 
 ## <a name="plinko"></a> 1) Plinko
 
@@ -93,7 +93,7 @@ A gradient descent algorithm in logistic regression to handle binary classificat
 - refactoring with cross entropy to update learning rate.
 - plotting cost history with nodeplotlib.
 
-## <a name="fuelefficiency"></a> 5) Fuel efficiency
+## <a name="fuelefficiency"></a> 5) Fuel Efficiency Class
 
 A multinominal logistic regression to handle multi-value classification.
 
@@ -108,5 +108,7 @@ A multinominal logistic regression to handle multi-value classification.
 ### Features
 
 - refactoring to multi-column weights.
+- classifying continuous values in 3 ranges of fuel consumption: low, medium and high.
+- training a multinominal model.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
