@@ -4,7 +4,7 @@ class LogisticRegression {
   constructor(features, labels, options) {
     this.features = this.processFeatures(features);
     this.labels = tf.tensor(labels);
-    this.mseHistory = [];
+    this.costHistory = [];
 
     this.options = Object.assign(
       {
@@ -47,7 +47,7 @@ class LogisticRegression {
         const labelSlice = this.labels.slice([startIndex, 0], [batchSize, -1]);
         this.gradientDescent(featureSlice, labelSlice);
       }
-      this.recordMSE();
+      this.recordCost();
       this.updateLearningRate();
     }
   }
@@ -90,23 +90,29 @@ class LogisticRegression {
     return features.sub(mean).div(variance.pow(0.5));
   }
 
-  recordMSE() {
-    // Calculate vectorized MSE
-    const mse = this.features
-      .matMul(this.weights)
-      .sub(this.labels)
-      .pow(2)
-      .sum()
+  recordCost() {
+    // Calculate vectorized cost
+    // -(1/n) x (actual^T x log(guesses) + (- actual + 1)^T x log(- guesses + 1))
+    const guesses = this.features.matMul(this.weights).sigmoid();
+    const termOne = this.labels.transpose().matMul(guesses.log());
+    const termTwo = this.labels
+      .mul(-1)
+      .add(1)
+      .transpose()
+      .matMul(guesses.mul(-1).add(1).log());
+    const cost = termOne
+      .add(termTwo)
       .div(this.features.shape[0])
-      .arraySync();
-    this.mseHistory.unshift(mse); // rather than push() to make comparisons easier;
+      .mul(-1)
+      .arraySync()[0][0];
+    this.costHistory.unshift(cost);
   }
 
   updateLearningRate() {
-    if (this.mseHistory.length < 2) {
+    if (this.costHistory.length < 2) {
       return;
     }
-    if (this.mseHistory[0] > this.mseHistory[1]) {
+    if (this.costHistory[0] > this.costHistory[1]) {
       this.options.learningRate /= 2; // = this.options.learningRate / 2;
     } else {
       this.options.learningRate *= 1.05;

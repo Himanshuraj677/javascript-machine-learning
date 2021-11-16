@@ -4,6 +4,7 @@
 const tf = require("@tensorflow/tfjs");
 const loadCSV = require("./load-csv");
 const LogisticRegression = require("./logistic-regression");
+const plot = require("nodeplotlib");
 
 let { features, labels, testFeatures, testLabels } = loadCSV("./cars.csv", {
   dataColumns: ["horsepower", "displacement", "weight"],
@@ -16,9 +17,48 @@ let { features, labels, testFeatures, testLabels } = loadCSV("./cars.csv", {
 const regression = new LogisticRegression(features, labels, {
   learningRate: 0.5,
   iterations: 100,
-  batchSize: 50,
+  batchSize: 10,
   decisionBoundary: 0.5,
 });
 
 regression.train();
 console.log(regression.test(testFeatures, testLabels));
+
+// Plot data
+const data = [
+  {
+    y: regression.costHistory.reverse(),
+  },
+];
+const layout = {
+  title: {
+    text: "Plotting Cost History",
+    font: {
+      family: "Courier New, monospace",
+      size: 24,
+    },
+    xref: "paper",
+  },
+  xaxis: {
+    title: {
+      text: "Iteration #",
+      font: {
+        family: "Courier New, monospace",
+        size: 18,
+        color: "#7f7f7f",
+      },
+    },
+  },
+  yaxis: {
+    title: {
+      text: "Cost",
+      font: {
+        family: "Courier New, monospace",
+        size: 18,
+        color: "#7f7f7f",
+      },
+    },
+  },
+};
+
+plot.plot(data, layout);
