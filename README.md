@@ -6,6 +6,7 @@ This repo is made of 3 projects:
 2. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
 3. [**Gas Mileage Calculator**](#gasmileage): A gradient descent algorithm in linear regression using Tensorflow.js.
 4. [**Smog Test**](#smogtest): A gradient descent algorithm in logistic regression using Tensorflow.js.
+5. [**Fuel Efficiency**](#fuelefficiency): A gradient descent algorithm in multinomial logistic regression using Tensorflow.js.
 
 ## <a name="plinko"></a> 1) Plinko
 
@@ -91,5 +92,21 @@ A gradient descent algorithm in logistic regression using Tensorflow.js.
 - supporting variable decision boundaries.
 - refactoring with cross entropy to update learning rate.
 - plotting cost history with nodeplotlib.
+
+## <a name="fuelefficiency"></a> 5) Fuel efficiency
+
+A gradient descent algorithm in multinominal logistic regression using Tensorflow.js.
+
+[See 05-fuel-efficiency folder](https://github.com/solygambas/javascript-machine-learning/tree/main/05-fuel-efficiency)
+
+<!-- <p align="center">
+    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/05-fuel-efficiency">
+        <img src="05-fuel-efficiency/screenshot.png">
+    </a>
+</p> -->
+
+### Features
+
+- refactoring to multi-column weights.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2020).
