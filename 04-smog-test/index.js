@@ -20,9 +20,4 @@ const regression = new LogisticRegression(features, labels, {
 });
 
 regression.train();
-regression
-  .predict([
-    [130, 307, 1.752], // 23%
-    [88, 97, 1.065], // 94%
-  ])
-  .print();
+console.log(regression.test(testFeatures, testLabels));

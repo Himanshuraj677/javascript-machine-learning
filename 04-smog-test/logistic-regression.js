@@ -52,17 +52,13 @@ class LogisticRegression {
   }
 
   test(testFeatures, testLabels) {
-    testFeatures = this.processFeatures(testFeatures);
+    const predictions = this.predict(testFeatures).round(); // 0.5 is our decision boundary with .round()
     testLabels = tf.tensor(testLabels);
-
-    const predictions = testFeatures.matMul(this.weights);
-
-    // Sum of squares of residuals
-    const res = testLabels.sub(predictions).pow(2).sum().arraySync();
-    // Total sum of squares
-    const tot = testLabels.sub(testLabels.mean()).pow(2).sum().arraySync();
-    // Coefficient of determination
-    return 1 - res / tot;
+    // Compare predictions to real labels and sum up the number of incorrect predictions
+    const incorrect = predictions.sub(testLabels).abs().sum().arraySync(); // .abs() to avoid -1
+    console.log(incorrect);
+    // Calculate error percentage
+    return (predictions.shape[0] - incorrect) / predictions.shape[0];
   }
 
   processFeatures(features) {
