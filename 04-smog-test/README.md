@@ -1,6 +1,6 @@
 # Smog Test
 
-A gradient descent algorithm in logistic regression using Tensorflow.js.
+A gradient descent algorithm in logistic regression to handle binary classification.
 
 <p align="center">
         <img src="screenshot.png">

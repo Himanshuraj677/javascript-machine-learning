@@ -1,6 +1,6 @@
 # Fuel efficiency
 
-A gradient descent algorithm in multinominal logistic regression using Tensorflow.js.
+A multinominal logistic regression to handle multi-value classification.
 
 <!-- <p align="center">
         <img src="screenshot.png">

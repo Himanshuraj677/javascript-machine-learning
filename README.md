@@ -5,8 +5,8 @@ This repo is made of 3 projects:
 1. [**Plinko**](#plinko): A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 2. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
 3. [**Gas Mileage Calculator**](#gasmileage): A gradient descent algorithm in linear regression using Tensorflow.js.
-4. [**Smog Test**](#smogtest): A gradient descent algorithm in logistic regression using Tensorflow.js.
-5. [**Fuel Efficiency**](#fuelefficiency): A gradient descent algorithm in multinomial logistic regression using Tensorflow.js.
+4. [**Smog Test**](#smogtest): A gradient descent algorithm in logistic regression to handle binary classification.
+5. [**Fuel Efficiency**](#fuelefficiency): A multinominal logistic regression to handle multi-value classification.
 
 ## <a name="plinko"></a> 1) Plinko
 
@@ -75,7 +75,7 @@ A gradient descent algorithm in linear regression using Tensorflow.js.
 
 ## <a name="smogtest"></a> 4) Smog Test
 
-A gradient descent algorithm in logistic regression using Tensorflow.js.
+A gradient descent algorithm in logistic regression to handle binary classification.
 
 [See 04-smog-test folder](https://github.com/solygambas/javascript-machine-learning/tree/main/04-smog-test)
 
@@ -95,7 +95,7 @@ A gradient descent algorithm in logistic regression using Tensorflow.js.
 
 ## <a name="fuelefficiency"></a> 5) Fuel efficiency
 
-A gradient descent algorithm in multinominal logistic regression using Tensorflow.js.
+A multinominal logistic regression to handle multi-value classification.
 
 [See 05-fuel-efficiency folder](https://github.com/solygambas/javascript-machine-learning/tree/main/05-fuel-efficiency)
 
