@@ -2,7 +2,13 @@
 // require("@tensorflow/tfjs-node"); // CPU will be used for calculations
 // require("@tensorflow/tfjs-node-gpu"); // GPU will be used for calculations
 const tf = require("@tensorflow/tfjs");
-const loadCSV = require("./load-csv");
 const LogisticRegression = require("./multinominal-logistic-regression");
 const _ = require("lodash");
 const plot = require("nodeplotlib");
+const mnist = require("mnist-data");
+
+const mnistData = mnist.training(0, 10);
+
+const features = mnistData.images.values.map((image) => _.flatMap(image));
+
+console.log(features);
