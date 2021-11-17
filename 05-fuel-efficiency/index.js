@@ -5,7 +5,6 @@ const tf = require("@tensorflow/tfjs");
 const loadCSV = require("./load-csv");
 const LogisticRegression = require("./multinominal-logistic-regression");
 const _ = require("lodash");
-const plot = require("nodeplotlib");
 
 let { features, labels, testFeatures, testLabels } = loadCSV("./cars.csv", {
   dataColumns: ["horsepower", "displacement", "weight"],
@@ -31,48 +30,10 @@ const regression = new LogisticRegression(features, _.flatMap(labels), {
   iterations: 100,
   batchSize: 10,
   decisionBoundary: 0.5,
-});
+}); // flatmap removes one level of nested arrays
 
 regression.train();
 
-regression.predict([[150, 200, 2.223]]).print();
-// console.log(regression.test(testFeatures, testLabels));
+// regression.predict([[150, 200, 2.223]]).print();
 
-// Plot data
-const data = [
-  {
-    // y: regression.costHistory.reverse(),
-  },
-];
-const layout = {
-  title: {
-    text: "Plotting Cost History",
-    font: {
-      family: "Courier New, monospace",
-      size: 24,
-    },
-    xref: "paper",
-  },
-  xaxis: {
-    title: {
-      text: "Iteration #",
-      font: {
-        family: "Courier New, monospace",
-        size: 18,
-        color: "#7f7f7f",
-      },
-    },
-  },
-  yaxis: {
-    title: {
-      text: "Cost",
-      font: {
-        family: "Courier New, monospace",
-        size: 18,
-        color: "#7f7f7f",
-      },
-    },
-  },
-};
-
-// plot.plot(data, layout);
+console.log(regression.test(testFeatures, _.flatMap(testLabels))); // 0.8

@@ -60,16 +60,14 @@ class LogisticRegression {
     return this.processFeatures(observations)
       .matMul(this.weights)
       .softmax()
-      .greater(this.options.decisionBoundary)
-      .cast("float32"); // to convert bool to numbers
-    // use .round() if your decision boundary is always 0.5
+      .argMax(1); // take the largest value on the horizontal axis
   }
 
   test(testFeatures, testLabels) {
     const predictions = this.predict(testFeatures);
-    testLabels = tf.tensor(testLabels);
+    testLabels = tf.tensor(testLabels).argMax(1);
     // Compare predictions to real labels and sum up the number of incorrect predictions
-    const incorrect = predictions.sub(testLabels).abs().sum().arraySync(); // .abs() to avoid -1
+    const incorrect = predictions.notEqual(testLabels).sum().arraySync(); // 1s will be errors
     // Calculate error percentage
     return (predictions.shape[0] - incorrect) / predictions.shape[0];
   }
