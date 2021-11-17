@@ -25,8 +25,8 @@ class LogisticRegression {
 
   gradientDescent(features, labels) {
     // 2) Calculate cross entropy with respect to m and b
-    // sigmoid equation: 1 / (1 + e^-(m * x + b)
-    const currentGuesses = features.matMul(this.weights).sigmoid();
+    // softmax equation: (e ^mx + b) / sum(e ^mx + b)
+    const currentGuesses = features.matMul(this.weights).softmax();
     const differences = currentGuesses.sub(labels);
     const slopes = features
       .transpose()
@@ -59,7 +59,7 @@ class LogisticRegression {
   predict(observations) {
     return this.processFeatures(observations)
       .matMul(this.weights)
-      .sigmoid()
+      .softmax()
       .greater(this.options.decisionBoundary)
       .cast("float32"); // to convert bool to numbers
     // use .round() if your decision boundary is always 0.5

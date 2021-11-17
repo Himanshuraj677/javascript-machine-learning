@@ -99,16 +99,11 @@ A multinominal logistic regression to handle multi-value classification.
 
 [See 05-fuel-efficiency folder](https://github.com/solygambas/javascript-machine-learning/tree/main/05-fuel-efficiency)
 
-<!-- <p align="center">
-    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/05-fuel-efficiency">
-        <img src="05-fuel-efficiency/screenshot.png">
-    </a>
-</p> -->
-
 ### Features
 
 - refactoring to multi-column weights.
 - classifying continuous values in 3 ranges of fuel consumption: low, medium and high.
 - training a multinominal model.
+- handling conditional probability distribution with the softmax equation.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2021).

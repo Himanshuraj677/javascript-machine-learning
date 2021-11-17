@@ -35,7 +35,7 @@ const regression = new LogisticRegression(features, _.flatMap(labels), {
 
 regression.train();
 
-regression.predict([[220, 454, 2.18]]).print();
+regression.predict([[150, 200, 2.223]]).print();
 // console.log(regression.test(testFeatures, testLabels));
 
 // Plot data
