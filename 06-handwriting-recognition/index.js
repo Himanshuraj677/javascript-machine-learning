@@ -18,7 +18,7 @@ const encodedLabels = mnistData.labels.values.map((label) => {
 const regression = new LogisticRegression(features, encodedLabels, {
   learningRate: 1,
   iterations: 20,
-  batchSize: 100,
+  batchSize: 100, // batch quantity: 5000 / 100 = 50
 });
 
 regression.train();
@@ -34,4 +34,4 @@ const testEncodedLabels = testMnistData.labels.values.map((label) => {
 });
 
 const accuracy = regression.test(testFeatures, testEncodedLabels);
-console.log("Accuracy is", accuracy);
+console.log("Accuracy is", accuracy); // 0.89

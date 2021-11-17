@@ -75,6 +75,7 @@ class LogisticRegression {
   processFeatures(features) {
     features = tf.tensor(features);
     // Standardize values
+    // debugger;
     if (this.mean && this.variance) {
       features = features.sub(this.mean).div(this.variance.pow(0.5));
     } else {
@@ -87,9 +88,11 @@ class LogisticRegression {
 
   standardize(features) {
     const { mean, variance } = tf.moments(features, 0);
+    // handle zero variances
+    const filler = variance.cast("bool").logicalNot().cast("float32"); // 0s will be 1s
     this.mean = mean;
-    this.variance = variance;
-    return features.sub(mean).div(variance.pow(0.5));
+    this.variance = variance.add(filler);
+    return features.sub(mean).div(this.variance.pow(0.5));
   }
 
   recordCost() {
