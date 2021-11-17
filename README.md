@@ -1,12 +1,13 @@
 # Machine Learning Projects with JavaScript
 
-This repo is made of 5 projects:
+This repo is made of 6 projects:
 
 1. [**Plinko**](#plinko): A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 2. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
 3. [**Gas Mileage Calculator**](#gasmileage): A gradient descent algorithm in linear regression using Tensorflow.js.
 4. [**Smog Test**](#smogtest): A gradient descent algorithm in logistic regression to handle natural binary classification.
 5. [**Fuel Efficiency Class**](#fuelefficiency): A multinominal logistic regression to handle multi-value classification.
+6. [**Handwriting Recognition**](#handwriting): Another multinominal logistic regression with a larger dataset.
 
 ## <a name="plinko"></a> 1) Plinko
 
@@ -106,5 +107,15 @@ A multinominal logistic regression to handle multi-value classification.
 - training a multinominal model.
 - handling conditional probability distribution with the softmax equation.
 - implementing accuracy gauges with argMax() and calculating accurary.
+
+## <a name="handwriting"></a> 6) Handwriting Recognition
+
+Another multinominal logistic regression with a larger dataset.
+
+[See 06-handwriting-recognition folder](https://github.com/solygambas/javascript-machine-learning/tree/main/06-handwriting-recognition)
+
+### Features
+
+- x
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2021).
