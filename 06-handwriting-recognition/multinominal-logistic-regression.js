@@ -34,7 +34,7 @@ class LogisticRegression {
       .div(features.shape[0]);
 
     // 3) and 4) Multiply both slopes by learning rates and substract results from b and m
-    this.weights = this.weights.sub(slopes.mul(this.options.learningRate));
+    return this.weights.sub(slopes.mul(this.options.learningRate));
   }
 
   train() {
@@ -44,14 +44,22 @@ class LogisticRegression {
     for (let i = 0; i < this.options.iterations; i++) {
       for (let j = 0; j < batchQuantity; j++) {
         const startIndex = j * batchSize;
-        const featureSlice = this.features.slice(
-          [startIndex, 0],
-          [batchSize, -1]
-        );
-        const labelSlice = this.labels.slice([startIndex, 0], [batchSize, -1]);
-        this.gradientDescent(featureSlice, labelSlice);
+
+        // Tidying the training loop: clean up unnecessary tensors from memory
+        this.weights = tf.tidy(() => {
+          const featureSlice = this.features.slice(
+            [startIndex, 0],
+            [batchSize, -1]
+          );
+          const labelSlice = this.labels.slice(
+            [startIndex, 0],
+            [batchSize, -1]
+          );
+          console.log("numTensors (in tidy): " + tf.memory().numTensors);
+          return this.gradientDescent(featureSlice, labelSlice);
+        });
       }
-      debugger;
+      console.log("numTensors (outside tidy): " + tf.memory().numTensors);
       this.recordCost();
       this.updateLearningRate();
     }
@@ -99,18 +107,21 @@ class LogisticRegression {
   recordCost() {
     // Calculate vectorized cost
     // -(1/n) x (actual^T x log(guesses) + (- actual + 1)^T x log(- guesses + 1))
-    const guesses = this.features.matMul(this.weights).sigmoid();
-    const termOne = this.labels.transpose().matMul(guesses.log());
-    const termTwo = this.labels
-      .mul(-1)
-      .add(1)
-      .transpose()
-      .matMul(guesses.mul(-1).add(1).log());
-    const cost = termOne
-      .add(termTwo)
-      .div(this.features.shape[0])
-      .mul(-1)
-      .arraySync()[0][0];
+    const cost = tf.tidy(() => {
+      const guesses = this.features.matMul(this.weights).sigmoid();
+      const termOne = this.labels.transpose().matMul(guesses.log());
+      const termTwo = this.labels
+        .mul(-1)
+        .add(1)
+        .transpose()
+        .matMul(guesses.mul(-1).add(1).log());
+      return termOne
+        .add(termTwo)
+        .div(this.features.shape[0])
+        .mul(-1)
+        .arraySync()[0][0];
+    });
+
     this.costHistory.unshift(cost);
   }
 

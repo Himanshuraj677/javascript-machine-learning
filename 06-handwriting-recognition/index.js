@@ -7,6 +7,7 @@ const _ = require("lodash");
 const plot = require("nodeplotlib");
 const mnist = require("mnist-data");
 
+// Reduce memory usage
 function loadData() {
   const mnistData = mnist.training(0, 5000);
   const features = mnistData.images.values.map((image) => _.flatMap(image));
@@ -15,7 +16,7 @@ function loadData() {
     row[label] = 1; // row[7] = 1 if label value is 7
     return row; // [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0  ],
   });
-  return { features, labels: encodedLabels };
+  return { features, labels: encodedLabels }; // Release reference to MNIST dataset
 }
 
 const { features, labels } = loadData();
@@ -27,6 +28,8 @@ const regression = new LogisticRegression(features, labels, {
 });
 
 regression.train();
+
+debugger;
 
 const testMnistData = mnist.testing(0, 100);
 const testFeatures = testMnistData.images.values.map((image) =>
