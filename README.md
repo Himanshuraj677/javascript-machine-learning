@@ -114,6 +114,12 @@ Another multinominal logistic regression with a larger dataset.
 
 [See 06-handwriting-recognition folder](https://github.com/solygambas/javascript-machine-learning/tree/main/06-handwriting-recognition)
 
+<p align="center">
+    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/06-handwriting-recognition">
+        <img src="06-handwriting-recognition/screenshot.png">
+    </a>
+</p>
+
 ### Features
 
 - flattening image data from MNIST handwritten digit database.
@@ -124,5 +130,6 @@ Another multinominal logistic regression with a larger dataset.
 - releasing references to MNIST dataset.
 - optimizing Tensorflow.js memory usage with tf.tidy().
 - measuring footprint reduction.
+- plotting cost history and improving model accuracy.
 
 Based on [Machine Learning with JavaScript](https://www.udemy.com/course/machine-learning-with-javascript/) by Stephen Grider (2021).

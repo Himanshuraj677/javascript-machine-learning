@@ -9,7 +9,7 @@ const mnist = require("mnist-data");
 
 // Reduce memory usage
 function loadData() {
-  const mnistData = mnist.training(0, 5000);
+  const mnistData = mnist.training(0, 60000); // up to 60 000
   const features = mnistData.images.values.map((image) => _.flatMap(image));
   const encodedLabels = mnistData.labels.values.map((label) => {
     const row = new Array(10).fill(0);
@@ -23,15 +23,13 @@ const { features, labels } = loadData();
 
 const regression = new LogisticRegression(features, labels, {
   learningRate: 1,
-  iterations: 20,
-  batchSize: 100, // batch quantity: 5000 / 100 = 50
+  iterations: 40,
+  batchSize: 500, // batch quantity: 5000 / 100 = 50
 });
 
 regression.train();
 
-debugger;
-
-const testMnistData = mnist.testing(0, 100);
+const testMnistData = mnist.testing(0, 10000);
 const testFeatures = testMnistData.images.values.map((image) =>
   _.flatMap(image)
 );
@@ -42,4 +40,43 @@ const testEncodedLabels = testMnistData.labels.values.map((label) => {
 });
 
 const accuracy = regression.test(testFeatures, testEncodedLabels);
-console.log("Accuracy is", accuracy); // 0.89
+console.log("Accuracy is", accuracy); // 0.9253
+
+// Plot data
+const data = [
+  {
+    y: regression.costHistory.reverse(),
+  },
+];
+const layout = {
+  title: {
+    text: "Plotting Cost History",
+    font: {
+      family: "Courier New, monospace",
+      size: 24,
+    },
+    xref: "paper",
+  },
+  xaxis: {
+    title: {
+      text: "Iteration #",
+      font: {
+        family: "Courier New, monospace",
+        size: 18,
+        color: "#7f7f7f",
+      },
+    },
+  },
+  yaxis: {
+    title: {
+      text: "Cost",
+      font: {
+        family: "Courier New, monospace",
+        size: 18,
+        color: "#7f7f7f",
+      },
+    },
+  },
+};
+
+plot.plot(data, layout);
