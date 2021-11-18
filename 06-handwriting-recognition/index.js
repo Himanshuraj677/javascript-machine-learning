@@ -7,15 +7,20 @@ const _ = require("lodash");
 const plot = require("nodeplotlib");
 const mnist = require("mnist-data");
 
-const mnistData = mnist.training(0, 5000);
-const features = mnistData.images.values.map((image) => _.flatMap(image));
-const encodedLabels = mnistData.labels.values.map((label) => {
-  const row = new Array(10).fill(0);
-  row[label] = 1; // row[7] = 1 if label value is 7
-  return row; // [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0  ],
-});
+function loadData() {
+  const mnistData = mnist.training(0, 5000);
+  const features = mnistData.images.values.map((image) => _.flatMap(image));
+  const encodedLabels = mnistData.labels.values.map((label) => {
+    const row = new Array(10).fill(0);
+    row[label] = 1; // row[7] = 1 if label value is 7
+    return row; // [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0  ],
+  });
+  return { features, labels: encodedLabels };
+}
 
-const regression = new LogisticRegression(features, encodedLabels, {
+const { features, labels } = loadData();
+
+const regression = new LogisticRegression(features, labels, {
   learningRate: 1,
   iterations: 20,
   batchSize: 100, // batch quantity: 5000 / 100 = 50
