@@ -1,13 +1,15 @@
 # Machine Learning Projects with JavaScript
 
-This repo is made of 6 projects:
+6 projects to understand basic algorithms in Machine Learning, using Lodash and Tensorflow.js.
 
-1. [**Plinko**](#plinko): A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
-2. [**House Pricings**](#housepricings): Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
-3. [**Gas Mileage Calculator**](#gasmileage): A gradient descent algorithm in linear regression using Tensorflow.js.
-4. [**Smog Test**](#smogtest): A gradient descent algorithm in logistic regression to handle natural binary classification.
-5. [**Fuel Efficiency Class**](#fuelefficiency): A multinominal logistic regression to handle multi-value classification.
-6. [**Handwriting Recognition**](#handwriting): Another multinominal logistic regression with a larger dataset.
+| #   | Project                           | Description                                           |
+| --- | --------------------------------- | ----------------------------------------------------- |
+| 01  | [**Plinko**](#plinko) | A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.               |
+| 02  | [**House Pricings**](#housepricings)        | Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.           |
+| 03  | [**Gas Mileage Calculator**](#gasmileage)     | A gradient descent algorithm in linear regression using Tensorflow.js.                                 |
+| 04  | [**Smog Test**](#smogtest)    | A gradient descent algorithm in logistic regression to handle natural binary classification.                     |
+| 05  | [**Fuel Efficiency Class**](#fuelefficiency)          | A multinominal logistic regression to handle multi-value classification.                  |
+| 06  | [**Handwriting Recognition**](#handwriting)          | Another multinominal logistic regression with a larger dataset. |
 
 ## <a name="plinko"></a> 1) Plinko
 
