@@ -2,23 +2,23 @@
 
 6 projects to understand basic algorithms in Machine Learning, using Lodash and Tensorflow.js.
 
-| #   | Project                           | Description                                           |
-| --- | --------------------------------- | ----------------------------------------------------- |
-| 01  | [**Plinko**](#plinko) | A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.               |
-| 02  | [**House Pricings**](#housepricings)        | Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.           |
-| 03  | [**Gas Mileage Calculator**](#gasmileage)     | A gradient descent algorithm in linear regression using Tensorflow.js.                                 |
-| 04  | [**Smog Test**](#smogtest)    | A gradient descent algorithm in logistic regression to handle natural binary classification.                     |
-| 05  | [**Fuel Efficiency Class**](#fuelefficiency)          | A multinominal logistic regression to handle multi-value classification.                  |
-| 06  | [**Handwriting Recognition**](#handwriting)          | Another multinominal logistic regression with a larger dataset. |
+| #   | Project                                      | Description                                                                                  |
+| --- | -------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| 01  | [**Plinko**](#plinko)                        | A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.                    |
+| 02  | [**House Pricings**](#housepricings)         | Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.            |
+| 03  | [**Gas Mileage Calculator**](#gasmileage)    | A gradient descent algorithm in linear regression using Tensorflow.js.                       |
+| 04  | [**Smog Test**](#smogtest)                   | A gradient descent algorithm in logistic regression to handle natural binary classification. |
+| 05  | [**Fuel Efficiency Class**](#fuelefficiency) | A multinominal logistic regression to handle multi-value classification.                     |
+| 06  | [**Handwriting Recognition**](#handwriting)  | Another multinominal logistic regression with a larger dataset.                              |
 
 ## <a name="plinko"></a> 1) Plinko
 
 A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 
-[See 01-plinko folder](https://github.com/solygambas/javascript-machine-learning/tree/main/01-plinko)
+[See 01-plinko folder](01-plinko)
 
 <p align="center">
-    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/01-plinko">
+    <a href="01-plinko">
         <img src="01-plinko/screenshot.png">
     </a>
 </p>
@@ -38,7 +38,7 @@ A quick introduction to K-Nearest Neighbors (KNN) algorithm using Lodash.
 
 Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js.
 
-[See 02-house-pricings folder](https://github.com/solygambas/javascript-machine-learning/tree/main/02-house-pricings)
+[See 02-house-pricings folder](02-house-pricings)
 
 ### Features
 
@@ -53,10 +53,10 @@ Another implementation of K-Nearest Neighbors (KNN) algorithm with Tensorflow.js
 
 A gradient descent algorithm in linear regression using Tensorflow.js.
 
-[See 03-gas-mileage-calculator folder](https://github.com/solygambas/javascript-machine-learning/tree/main/03-gas-mileage-calculator)
+[See 03-gas-mileage-calculator folder](03-gas-mileage-calculator)
 
 <p align="center">
-    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/03-gas-mileage-calculator">
+    <a href="03-gas-mileage-calculator">
         <img src="03-gas-mileage-calculator/screenshot.png">
     </a>
 </p>
@@ -80,10 +80,10 @@ A gradient descent algorithm in linear regression using Tensorflow.js.
 
 A gradient descent algorithm in logistic regression to handle natural binary classification.
 
-[See 04-smog-test folder](https://github.com/solygambas/javascript-machine-learning/tree/main/04-smog-test)
+[See 04-smog-test folder](04-smog-test)
 
 <p align="center">
-    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/04-smog-test">
+    <a href="04-smog-test">
         <img src="04-smog-test/screenshot.png">
     </a>
 </p>
@@ -100,7 +100,7 @@ A gradient descent algorithm in logistic regression to handle natural binary cla
 
 A multinominal logistic regression to handle multi-value classification.
 
-[See 05-fuel-efficiency folder](https://github.com/solygambas/javascript-machine-learning/tree/main/05-fuel-efficiency)
+[See 05-fuel-efficiency folder](05-fuel-efficiency)
 
 ### Features
 
@@ -114,10 +114,10 @@ A multinominal logistic regression to handle multi-value classification.
 
 Another multinominal logistic regression with a larger dataset.
 
-[See 06-handwriting-recognition folder](https://github.com/solygambas/javascript-machine-learning/tree/main/06-handwriting-recognition)
+[See 06-handwriting-recognition folder](06-handwriting-recognition)
 
 <p align="center">
-    <a href="https://github.com/solygambas/javascript-machine-learning/tree/main/06-handwriting-recognition">
+    <a href="06-handwriting-recognition">
         <img src="06-handwriting-recognition/screenshot.png">
     </a>
 </p>
